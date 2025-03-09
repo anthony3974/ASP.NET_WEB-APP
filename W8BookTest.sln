@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35806.99 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "W8BookTest", "W8BookTest.csproj", "{BBB5A4F8-67B6-4A32-8512-9B1DFBF4186C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "W8BookTestTests", "..\W8BookTestTests\W8BookTestTests.csproj", "{FBE05352-A054-4125-A8B2-E359C832E5D4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BBB5A4F8-67B6-4A32-8512-9B1DFBF4186C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBB5A4F8-67B6-4A32-8512-9B1DFBF4186C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBB5A4F8-67B6-4A32-8512-9B1DFBF4186C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBB5A4F8-67B6-4A32-8512-9B1DFBF4186C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBE05352-A054-4125-A8B2-E359C832E5D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBE05352-A054-4125-A8B2-E359C832E5D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBE05352-A054-4125-A8B2-E359C832E5D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBE05352-A054-4125-A8B2-E359C832E5D4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {23231C00-13E1-4635-930C-14531E456CE4}
+	EndGlobalSection
+EndGlobal
