@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using W8BookTest.Data;
 using W8BookTest.Repositories;
+using W8BookTest.Services;
 namespace W8BookTest
 {
     public class Program
@@ -11,7 +12,9 @@ namespace W8BookTest
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddDbContext<W8BookTestContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("W8BookTestContext") ?? throw new InvalidOperationException("Connection string 'W8BookTestContext' not found.")));
-            builder.Services.AddScoped<IBookRepository, BookRepository>();
+            builder.Services.AddSingleton<IBookRepository, InMemoryRepository>();
+            builder.Services.AddScoped<IBookService, BookService>();
+            //builder.Services.AddScoped<IBookRepository, BookRepository>();
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
@@ -34,7 +37,7 @@ namespace W8BookTest
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Books}/{action=Index}/{id?}");
 
             app.Run();
         }

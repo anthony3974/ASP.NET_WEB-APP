@@ -8,22 +8,23 @@ using Microsoft.EntityFrameworkCore;
 using W8BookTest.Data;
 using W8BookTest.Models;
 using W8BookTest.Repositories;
+using W8BookTest.Services;
 
 namespace W8BookTest.Controllers
 {
     public class BooksController : Controller
     {
-        readonly IBookRepository _repository;
+        readonly IBookService _service;
 
-        public BooksController(IBookRepository repository)
+        public BooksController(IBookService service)
         {
-            _repository = repository;
+            _service = service;
         }
 
         // GET: Books
         public async Task<IActionResult> Index()
         {
-            return View(await _repository.GetAllAsync());
+            return View(await _service.GetAllBooksAsync());
         }
 
         // GET: Books/Details/5
@@ -34,7 +35,7 @@ namespace W8BookTest.Controllers
                 return NotFound();
             }
 
-            var book = await _repository.GetByIdAsync((int)id);
+            var book = await _service.GetBookByIdAsync((int)id);
             if (book == null)
             {
                 return NotFound();
@@ -59,7 +60,7 @@ namespace W8BookTest.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _repository.CreateAsync(book);
+                await _service.CreateBookAsync(book);
                 return RedirectToAction(nameof(Index));
             }
             return View(book);
@@ -73,7 +74,7 @@ namespace W8BookTest.Controllers
                 return NotFound();
             }
 
-            var book = await _repository.GetByIdAsync((int)id);
+            var book = await _service.GetBookByIdAsync((int)id);
             if (book == null)
             {
                 return NotFound();
@@ -97,7 +98,7 @@ namespace W8BookTest.Controllers
             {
                 try
                 {
-                    await _repository.UpdateAsync(book);
+                    await _service.UpdateBookAsync(book);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -123,7 +124,7 @@ namespace W8BookTest.Controllers
                 return NotFound();
             }
 
-            var book = await _repository.GetByIdAsync((int)id);
+            var book = await _service.GetBookByIdAsync((int)id);
             if (book == null)
             {
                 return NotFound();
@@ -137,13 +138,13 @@ namespace W8BookTest.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            await _repository.DeleteAsync(id);
+            await _service.DeleteBookAsync(id);
             return RedirectToAction(nameof(Index));
         }
 
         private async Task<bool> BookExists(int id)
         {
-            Book book = await _repository.GetByIdAsync(id);
+            Book? book = await _service.GetBookByIdAsync(id);
             if (book == null)
             {
                 return false;
